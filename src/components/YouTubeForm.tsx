@@ -41,14 +41,7 @@ export const YouTubeForm = () => {
                 dob: new Date()
             }
         },
-        // default mode - onSubmit
         mode: "onSubmit"
-        // mode: "onBlur",
-        // mode: "onTouched",
-        // The following mode will cause multiple re-render and impact performance
-        // mode: "onChange",
-        // The following will use both onBlur and onChange mode/events
-        // mode: "all",
     })
     // trigger - manually trigger validations for form fields
     const { register, control, handleSubmit, formState: { errors, touchedFields, dirtyFields, isDirty, isValid, isSubmitting, isSubmitted, isSubmitSuccessful, submitCount }, watch, getValues, setValue, reset, trigger } = form
@@ -98,8 +91,6 @@ export const YouTubeForm = () => {
         })
     }
 
-    const isChannelValid = watch("channel") === ""
-
     // watch using with useEffect will prevent the re-rendering
     useEffect(() => {
         const subscription = watch((value) => {
@@ -113,11 +104,6 @@ export const YouTubeForm = () => {
         return () => subscription.unsubscribe()
     }, [watch])
 
-    // Using watch in the following way the form will be re-rendered for each change on the form fields
-    // const watchUsername = watch("username")
-    // const watchEmailChannel = watch(["email", "channel"])
-    // const watchForm = watch()
-
     useEffect(() => {
         if (isSubmitSuccessful) {
             reset()
@@ -127,9 +113,6 @@ export const YouTubeForm = () => {
     return (
         <section className="flex flex-col items-center mt-6">
             <h1 className="text-bold text-3xl"> YouTube Form </h1>
-            {/* Using watch in the following way the form will be re-rendered for each change on the form fields */}
-            {/* <h2>Watched values: {watchUsername} {watchEmailChannel}</h2>
-            <h3> Watch entire form: {JSON.stringify(watchForm)} </h3> */}
 
             <section className="flex items-center border-2 border-sky-400 rounded-2xl mt-6 p-4 w-full md:w-1/2">
                 <h2 id="watch-entire-form-values"></h2>
@@ -183,9 +166,7 @@ export const YouTubeForm = () => {
                         {errors.social?.twitter?.message && <p className="text-red-500 text-left text-md">{errors.social?.twitter?.message}</p>}
                     </section>
 
-                    <TooltipSection tooltipMessage={isChannelValid ? "Please fill the above Channel field to enable this field" : "Enter your twitter handle"}>
-                        <input type="text" id="twitter" {...register("social.twitter", { disabled: isChannelValid, required: { value: true, message: "Twitter handle is required" } })} className="flex-1 p-4 bg-gray-200 text-md leading-relaxed border-2 border-sky-300 rounded-lg disabled:border-pink-500 disabled:text-pink-600 focus:disabled:border-pink-500 focus:disabled:ring-pink-500 hover:disabled:border-gray-500 hover:disabled:ring-gray-500 hover:bg-gray-100" />
-                    </TooltipSection>
+                    <input type="text" id="twitter" {...register("social.twitter", { required: { value: true, message: "Twitter handle is required" } })} className="p-4 bg-gray-200 text-md leading-relaxed border-2 border-sky-300 rounded-lg" />
                 </section>
 
                 <section className="flex flex-col mb-4 w-full md:w-1/2">

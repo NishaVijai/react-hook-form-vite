@@ -4,8 +4,6 @@ import { DevTool } from "@hookform/devtools"
 
 import { TooltipSection } from "./TooltipSection"
 
-let renderCount = 0;
-
 type FormValues = {
     username: string
     email: string
@@ -126,11 +124,9 @@ export const YouTubeForm = () => {
         }
     }, [isSubmitSuccessful, reset])
 
-    renderCount++;
-
     return (
         <section className="flex flex-col items-center mt-6">
-            <h1 className="text-bold text-3xl"> YouTube Form ({renderCount / 2})</h1>
+            <h1 className="text-bold text-3xl"> YouTube Form </h1>
             {/* Using watch in the following way the form will be re-rendered for each change on the form fields */}
             {/* <h2>Watched values: {watchUsername} {watchEmailChannel}</h2>
             <h3> Watch entire form: {JSON.stringify(watchForm)} </h3> */}

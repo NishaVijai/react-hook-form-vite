@@ -115,7 +115,7 @@ export const YouTubeForm = () => {
             <h1 className="text-bold text-3xl"> YouTube Form </h1>
 
             <section className="flex items-center border-2 border-sky-400 rounded-2xl mt-6 p-4 w-full md:w-1/2">
-                <h2 id="watch-entire-form-values" className="break-words text-pretty min-w-52 md:w-1/2"></h2>
+                <h2 id="watch-entire-form-values" className="break-words text-wrap min-w-52 md:w-1/2"></h2>
             </section>
 
             <form className="flex flex-col items-center mt-6 w-full" onSubmit={handleSubmit(onSubmit, onError)} noValidate>

@@ -17,7 +17,7 @@ type FormValues = {
     number: string
   }[]
   age: number
-  dob: Date
+  dob: string
 }
 
 export const YouTubeForm = () => {
@@ -38,7 +38,7 @@ export const YouTubeForm = () => {
         phoneNumbers: ["", ""],
         phNumbers: [{ number: "" }],
         age: 0,
-        dob: new Date()
+        dob: new Date().toISOString().split('T')[0]
       }
     },
     mode: "onSubmit"
@@ -239,7 +239,7 @@ export const YouTubeForm = () => {
             {errors.dob?.message && <p className="text-red-500 text-left text-md">{errors.dob?.message}</p>}
           </section>
 
-          <input type="date" id="dob" {...register("dob", { valueAsDate: true, required: { value: true, message: "Date of birth is required" } })} className="p-4 bg-gray-200 text-md leading-relaxed border-2 border-sky-300 rounded-lg" />
+          <input type="date" id="dob" {...register("dob", { required: { value: true, message: "Date of birth is required" } })} className="p-4 bg-gray-200 text-md leading-relaxed border-2 border-sky-300 rounded-lg" />
         </section>
 
         <section className="flex flex-wrap justify-center gap-2 w-full md:w-1/2">

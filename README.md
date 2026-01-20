@@ -127,7 +127,7 @@ react-hook-form-vite/
 
 ---
 
-## Build (Production)
+## Build
 
 To create a production build, run:
 
@@ -143,7 +143,7 @@ This command:
 
 ---
 
-## Deployment (Netlify)
+## Deployment
 
 This project is hosted on **Netlify** using **GitHub continuous deployment**.
 
